@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Dataverse.ConnectionStringProvider</id>
+    <version>$version$</version>
+    <authors>Łukasz Grzybowski-Glikman</authors>
+    <description>Provides flexible Dataverse connection string resolution, allowing applications to use a connection string directly or securely retrieve it from Azure Key Vault at runtime.</description>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/kowgli/Dataverse.ConnectionStringProvider</projectUrl>
+    <repository type="git" url="https://github.com/kowgli/Dataverse.ConnectionStringProvider" />
+    <readme>README.md</readme>
+    <tags>dataverse dynamics-365 connection-string azure-key-vault authentication</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.6.2">
+        <dependency id="Microsoft.Azure.KeyVault" version="[3.0.5]" />
+        <dependency id="Microsoft.Azure.Services.AppAuthentication" version="[1.6.2]" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\$configuration$\ConnectionStringProvider.dll" target="lib\net462" />
+    <file src="bin\$configuration$\ConnectionStringProvider.pdb" target="lib\net462" />
+    <file src="..\README.md" target="" />
+  </files>
+</package>
+

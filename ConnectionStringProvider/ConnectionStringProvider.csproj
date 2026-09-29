@@ -12,6 +12,19 @@
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <PackageId>Dataverse.ConnectionStringProvider</PackageId>
+    <Authors>Łukasz Grzybowski-Glikman</Authors>
+    <Description>Provides flexible Dataverse connection string resolution, allowing applications to use a connection string directly or securely retrieve it from Azure Key Vault at runtime.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/kowgli/Dataverse.ConnectionStringProvider</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/kowgli/Dataverse.ConnectionStringProvider</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>dataverse dynamics-365 connection-string azure-key-vault authentication</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageOutputPath>$(MSBuildProjectDirectory)\bin\NuGet</PackageOutputPath>
+    <NuspecFile>$(MSBuildProjectDirectory)\Dataverse.ConnectionStringProvider.nuspec</NuspecFile>
+    <NuspecProperties>configuration=$(Configuration);repositoryRoot=$(MSBuildProjectDirectory)\..</NuspecProperties>
+    <NuGetExePath Condition="'$(NuGetExePath)' == ''">$(MSBuildThisFileDirectory)..\tools\nuget.exe</NuGetExePath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -92,6 +105,18 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Dataverse.ConnectionStringProvider.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="PackNuGetOnRelease" AfterTargets="Build" Condition="'$(Configuration)' == 'Release' and '$(DesignTimeBuild)' != 'true'">
+    <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
+      <Output TaskParameter="Assemblies" ItemName="BuiltAssemblyIdentity" />
+    </GetAssemblyIdentity>
+    <PropertyGroup>
+      <PackageVersion>@(BuiltAssemblyIdentity-&gt;'%(Version)')</PackageVersion>
+    </PropertyGroup>
+    <MakeDir Directories="$(PackageOutputPath)" />
+    <Exec Command="$(NuGetExePath) pack $(NuspecFile) -Version $(PackageVersion) -Properties configuration=$(Configuration) -OutputDirectory $(PackageOutputPath) -BasePath $(MSBuildProjectDirectory) -NonInteractive" Condition="Exists('$(NuGetExePath)')" />
+    <Error Condition="!Exists('$(NuGetExePath)')" Text="NuGet.exe was not found at $(NuGetExePath). Set NuGetExePath to its full path." />
+  </Target>
 </Project>
