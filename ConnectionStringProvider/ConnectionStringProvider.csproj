@@ -113,7 +113,7 @@
       <Output TaskParameter="Assemblies" ItemName="BuiltAssemblyIdentity" />
     </GetAssemblyIdentity>
     <PropertyGroup>
-      <PackageVersion>@(BuiltAssemblyIdentity-&gt;'%(Version)')</PackageVersion>
+      <PackageVersion>@(BuiltAssemblyIdentity->'%(Version)')</PackageVersion>
     </PropertyGroup>
     <MakeDir Directories="$(PackageOutputPath)" />
     <Exec Command="$(NuGetExePath) pack $(NuspecFile) -Version $(PackageVersion) -Properties configuration=$(Configuration) -OutputDirectory $(PackageOutputPath) -BasePath $(MSBuildProjectDirectory) -NonInteractive" Condition="Exists('$(NuGetExePath)')" />

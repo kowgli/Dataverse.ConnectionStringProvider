@@ -2,6 +2,7 @@
 using Microsoft.Azure.Services.AppAuthentication;
 using System;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace ConnectionStringProvider
 {
@@ -19,7 +20,7 @@ namespace ConnectionStringProvider
         /// "Url=https://org.crm.dynamics.com; AuthType=ClientSecret; ClientId=xxxxxx-yyyyy-zzzzzz; ClientSecret=XYZ123" is returned as is.
         /// </example>
         /// <returns>Actual connection string</returns>
-        public static string Get(string connectionString)
+        public static string Get(string connectionString, bool silent = false)
         {
             if (string.IsNullOrEmpty(connectionString))
             {
@@ -28,11 +29,14 @@ namespace ConnectionStringProvider
 
             if (!UseAzureKeyVault(connectionString))
             {
+                if (!silent) { Console.WriteLine("Detected Dataverse connection string. Using explicitly."); }
                 return connectionString;
             }
 
             try
             {
+                if (!silent) { Console.WriteLine("Detected Azure Key Vault connection string. Trying to retrieve..."); }
+
                 (string vaultUrl, string secret) = ParseKeyVaultConfig(connectionString);
 
                 var tokenCallback = new AzureServiceTokenProvider("RunAs=Developer; DeveloperTool=AzureCli").KeyVaultTokenCallback;
@@ -40,6 +44,8 @@ namespace ConnectionStringProvider
                 var client = new KeyVaultClient(authCallback);
 
                 var retrievedSecret = client.GetSecretAsync(vaultUrl, secret).Result;
+
+                if (!silent) { Console.WriteLine("Connection string successfully retrieved."); }
 
                 return retrievedSecret?.Value;
             }
