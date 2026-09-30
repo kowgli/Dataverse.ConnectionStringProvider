@@ -1,7 +1,7 @@
 using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
 
-namespace ConnectionStringProviderModern;
+namespace ConnectionStringProvider;
 
 /// <summary>
 /// Gets a connection string, optionally retrieving it from Azure Key Vault.

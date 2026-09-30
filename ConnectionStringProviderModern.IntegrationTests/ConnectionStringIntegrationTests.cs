@@ -27,7 +27,7 @@ public sealed class ConnectionStringIntegrationTests
 
         string keyVaultConfiguration = $"VaultUrl={vaultUrl.TrimEnd('/')}; Key={SecretName}";
 
-        string value = global::ConnectionStringProviderModern.ConnectionString.Get(keyVaultConfiguration, silent: true);
+        string value = global::ConnectionStringProvider.ConnectionString.Get(keyVaultConfiguration, silent: true);
 
         Assert.AreEqual("12345", value);
     }
@@ -38,7 +38,7 @@ public sealed class ConnectionStringIntegrationTests
         const string explicitConnectionString =
             "Url=https://example.crm.dynamics.com; AuthType=ClientSecret; ClientId=00000000-0000-0000-0000-000000000000; ClientSecret=example-secret";
 
-        string value = global::ConnectionStringProviderModern.ConnectionString.Get(explicitConnectionString, silent: true);
+        string value = global::ConnectionStringProvider.ConnectionString.Get(explicitConnectionString, silent: true);
 
         Assert.AreEqual(explicitConnectionString, value);
     }

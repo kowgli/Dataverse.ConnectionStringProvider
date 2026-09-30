@@ -10,14 +10,14 @@ Calling code passes the configured value to one method. The provider returns eit
 Install-Package Dataverse.ConnectionStringProvider.Modern
 ```
 
-The package targets **.NET 10** (`net10.0`). It does not target .NET Framework. For .NET Framework 4.6.2, use the legacy `Dataverse.ConnectionStringProvider` package.
+The package targets **.NET 10** (`net10.0`). It does not target .NET Framework. For .NET Framework 4.6.2, use the legacy `Dataverse.ConnectionStringProvider` package. Both packages expose the same client API in the `ConnectionStringProvider` namespace, so consuming code can use `ConnectionString.Get(...)` on either target framework.
 
 ## Usage
 
 ### Direct connection string
 
 ```csharp
-using ConnectionStringProviderModern;
+using ConnectionStringProvider;
 
 var configuredValue =
     "Url=https://example.crm.dynamics.com;" +
@@ -35,7 +35,7 @@ If the value does not contain `VaultUrl`, it is returned unchanged.
 Store the complete Dataverse connection string as an Azure Key Vault secret, then provide the vault URL and secret name:
 
 ```csharp
-using ConnectionStringProviderModern;
+using ConnectionStringProvider;
 
 var configuredValue =
     "VaultUrl=https://your-vault.vault.azure.net/;" +

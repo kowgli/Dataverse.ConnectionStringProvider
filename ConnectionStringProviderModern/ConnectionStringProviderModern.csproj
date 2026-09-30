@@ -6,14 +6,14 @@
     <Nullable>enable</Nullable>
 
     <PackageId>Dataverse.ConnectionStringProvider.Modern</PackageId>
-    <Version>1.1.0</Version>
+    <Version>1.2.0</Version>
     <Authors>Łukasz Grzybowski-Glikman</Authors>
-    <Description>Provides flexible Dataverse connection string resolution for modern .NET, allowing applications to use a connection string directly or securely retrieve it from Azure Key Vault at runtime.</Description>
+    <Description>Provides flexible Dataverse connection string resolution for .NET 10 using the same ConnectionStringProvider API as the legacy .NET Framework package, with modern Azure SDK authentication and Azure Key Vault access.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/kowgli/Dataverse.ConnectionStringProvider</PackageProjectUrl>
     <RepositoryUrl>https://github.com/kowgli/Dataverse.ConnectionStringProvider</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>dataverse dynamics-365 connection-string azure-key-vault authentication</PackageTags>
+    <PackageTags>dataverse dynamics-365 connection-string azure-key-vault authentication net10 modern-azure-sdk</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageOutputPath>$(MSBuildProjectDirectory)\bin\NuGet</PackageOutputPath>
     <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
@@ -29,4 +29,3 @@
   </ItemGroup>
 
 </Project>
-
