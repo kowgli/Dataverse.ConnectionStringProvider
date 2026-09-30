@@ -4,6 +4,19 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+
+    <PackageId>Dataverse.ConnectionStringProvider.Modern</PackageId>
+    <Version>1.1.0</Version>
+    <Authors>Łukasz Grzybowski-Glikman</Authors>
+    <Description>Provides flexible Dataverse connection string resolution for modern .NET, allowing applications to use a connection string directly or securely retrieve it from Azure Key Vault at runtime.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/kowgli/Dataverse.ConnectionStringProvider</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/kowgli/Dataverse.ConnectionStringProvider</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>dataverse dynamics-365 connection-string azure-key-vault authentication</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageOutputPath>$(MSBuildProjectDirectory)\bin\NuGet</PackageOutputPath>
+    <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,4 +24,9 @@
     <PackageReference Include="Azure.Security.KeyVault.Secrets" Version="4.11.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
 </Project>
+
