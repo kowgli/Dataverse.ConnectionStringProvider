@@ -1,3 +1,6 @@
 <Solution>
-  <Project Path="ConnectionStringProvider/ConnectionStringProvider.csproj" />
+  <Project Path="ConnectionStringProvider/ConnectionStringProvider.csproj" Id="639d6138-c22e-44cd-a598-50180bb23e8b" />
+  <Project Path="ConnectionStringProvider.IntegrationTests.Net462/ConnectionStringProvider.IntegrationTests.Net462.csproj" />
+  <Project Path="ConnectionStringProviderModern/ConnectionStringProviderModern.csproj" Id="7474a170-c328-4e57-8476-be0424f8cf3d" />
+  <Project Path="ConnectionStringProviderModern.IntegrationTests/ConnectionStringProviderModern.IntegrationTests.csproj" />
 </Solution>
