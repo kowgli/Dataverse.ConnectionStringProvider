@@ -42,4 +42,17 @@ public sealed class ConnectionStringIntegrationTests
 
         Assert.AreEqual(explicitConnectionString, value);
     }
+
+    [TestMethod]
+    public void Get_ReturnsFileConnectionString()
+    {
+        string testConnString = "File=TestConnectionString.txt";
+        string testSecret = Guid.NewGuid().ToString();
+        
+        File.WriteAllText("TestConnectionString.txt", testSecret);
+
+        string value = global::ConnectionStringProvider.ConnectionString.Get(testConnString, silent: true);
+
+        Assert.AreEqual(testSecret, value);
+    }
 }

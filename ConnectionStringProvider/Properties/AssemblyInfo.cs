@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("ConnectionStringProvider")]
-[assembly: AssemblyDescription("Provides flexible Dataverse connection string resolution, allowing applications to use a connection string directly or securely retrieve it from Azure Key Vault at runtime.")]
+[assembly: AssemblyDescription("Provides flexible Dataverse connection string resolution, allowing applications to use a connection string directly, read it from a plain-text file, or securely retrieve it from Azure Key Vault at runtime.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Łukasz Grzybowski-Glikman")]
 [assembly: AssemblyProduct("Dataverse.ConnectionStringProvider")]
@@ -29,6 +29,6 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.1.0.0")]
-[assembly: AssemblyFileVersion("1.1.0.0")]
+[assembly: AssemblyVersion("1.3.0.0")]
+[assembly: AssemblyFileVersion("1.3.0.0")]
 

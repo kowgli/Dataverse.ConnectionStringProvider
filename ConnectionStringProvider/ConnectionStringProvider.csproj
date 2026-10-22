@@ -14,7 +14,7 @@
     <Deterministic>true</Deterministic>
     <PackageId>Dataverse.ConnectionStringProvider</PackageId>
     <Authors>Łukasz Grzybowski-Glikman</Authors>
-    <Description>Provides flexible Dataverse connection string resolution, allowing applications to use a connection string directly or securely retrieve it from Azure Key Vault at runtime.</Description>
+    <Description>Provides flexible Dataverse connection string resolution, allowing applications to use a connection string directly, read it from a plain-text file, or securely retrieve it from Azure Key Vault at runtime.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/kowgli/Dataverse.ConnectionStringProvider</PackageProjectUrl>
     <RepositoryUrl>https://github.com/kowgli/Dataverse.ConnectionStringProvider</RepositoryUrl>
